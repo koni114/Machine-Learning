@@ -17,6 +17,10 @@
 - 이처럼 각 class 별 확률을 알 수 있음
 
 ## 불순도(impurity)
+- 노드의 gini 속성은 불순도를 측정하는데, 한 노드의 모든 샘플이 같은 클래스에 속해 있다면, 이 노드를 순수(gini = 0) 이라고 함
+- 즉 gini 불순도가 낮을수록 노드 분할이 잘 되었다고 판단이 가능
+- entropy 불순도도 마찬가지로 엔트로피 값이 0이 되었을 때 잘 분할되었다고 판단 가능
+
 ### 1. Gini 불순도
 <p align = 'center'><img src="https://latex.codecogs.com/gif.latex?G_{i}&space;=&space;1&space;-&space;\sum_{k&space;=&space;1}^{n}&space;P_{i,k}^{2}" /></p>
 
@@ -27,7 +31,7 @@
 - 엔트로피는 원래 분자의 무질서함을 측정하는 것으로 원래 열역학의 개념
 - 분자가 안정되고 질서 정연하면 0에 가까움
 - 여기서는 모든 메세지(class)가 동일할 때 엔트로피는 0이됨
-- entropy 식은 다음과 같음
+- entropy 식은 다음과 같음(하단 식에서 마이너스 추가해야함!)
 <p align = 'center'><img src="https://latex.codecogs.com/gif.latex?H_{i}&space;=&space;\sum_{k&space;=&space;1,&space;p_{i,&space;k&space;!=&space;0}}^{n}&space;P_{i,&space;k}*&space;log_{2}(P_{i,&space;k})" /></p>
 
 - 지니 불순도와 엔트로피 중 어느 것을 사용해야 하나?
