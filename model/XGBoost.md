@@ -68,11 +68,13 @@
 
 ## extreme gradient Boosting
 - Gradient Boosting 알고리즘을 분산환경에서도 실행할 수 있도록 구현해놓은 라이브러리
-- 유연성이 좋음. 평가 함수를 포함하여 다양한 커스텀 최적화 옵셥을 제공
+- 유연성이 좋음. 평가 함수를 포함하여 다양한 커스텀 최적화 옵션을 제공
 - Greedy-algorithm을 사용한 가지치기가 가능. 따라서 과적합이 잘 일어나지 않음
+- 또한 과적합 방지를 위해 규제가 포함되어 있음
+- early stopping을 내부적으로 제공함
 - xgboost는 트리를 만들때 CART(Classification and Regression Trees) 기반 트리를 생성
 - 즉 수식으로는 어떠한 의사결정트리가 주어졌을 때, 해당 트리의 score(information gain)를 계산할 수 있고, 이러한 score 기반으로 나무를 greedy algorithm에 의거하여 가지를 계속 펼쳐나가고(<b>Split Finding</b>), score가 (-)되는 시점에 가치지기를 수행하는 방식
-- 
+-
 
 #### R - XGBTree package 파라미터 종류
 * gamma : 이 값이 커지면 트리 깊이가 줄어들어 보수적인 모델이 됨
