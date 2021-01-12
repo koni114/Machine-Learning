@@ -20,6 +20,8 @@
 - 노드의 gini 속성은 불순도를 측정하는데, 한 노드의 모든 샘플이 같은 클래스에 속해 있다면, 이 노드를 순수(gini = 0) 이라고 함
 - 즉 gini 불순도가 낮을수록 노드 분할이 잘 되었다고 판단이 가능
 - entropy 불순도도 마찬가지로 엔트로피 값이 0이 되었을 때 잘 분할되었다고 판단 가능
+- <b>수치 예측 모형같은 경우 불순도를 분산(variance)로 판단</b>
+- 최적의 노드 분할을 찾을 때 분류 모델시 information gain(불순도의 차)이 가장 큰 값을 가지는 분기를 찾아 적용하고, 수치 예측 모델은 MSE(잔차제곱합평균)으로 최적의 분기를 찾음
 
 ### 1. Gini 불순도
 <p align = 'center'><img src="https://latex.codecogs.com/gif.latex?G_{i}&space;=&space;1&space;-&space;\sum_{k&space;=&space;1}^{n}&space;P_{i,k}^{2}" /></p>
