@@ -11,8 +11,11 @@
   - F1-Score
 
 - Regression
+  - MAE
+  - MSE
+  - RMSE
   - MSPE
-  - MSAE
+  - RMSLE
   - R Square
   - Adjusted R Square
 
@@ -65,8 +68,9 @@ recall <- TP / (TP + FN)
 
 ### ROC Curve(개념에 대한 자세한 설명 추가 필요)
 - ROC 곡선은 이진 분류 시스템에 대한 성능 평가 기법임
+- Cut Off를 조정해 가면서 P,N으로 예측할 확률에 대해서 계산
 - 면적(AUC)의 크기로 더 큰 것이 좋다고 할 수 있음 
-- x축 : 1-TNR(True Negative Rate), y축 : TPR(True Positive Rate)
+- x축 : FPR(False Positive Rate), y축 : TPR(True Positive Rate)
 
 ## Regression Metrics(예측 메트릭)
 ### MAE(Mean Absolute Error)

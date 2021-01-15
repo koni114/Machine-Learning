@@ -10,7 +10,7 @@
 
 ### Adaboost 예시
 - Adaboost 분류기를 만들 때 먼저 알고리즘 기반이 되는 첫 번째 분류기를 훈련 세트에 훈련시키고 예측을 만듬
-- 그 다음에 알고리즘이 잘못 분류된 훈련 샘플의 가중치를 상대적으로 높임
+- 그 다음에 알고리즘이 잘못 분류된 훈련 샘플의 가중치를 상대적으로 높임(이 가중치는 오류율 계산때 사용)
 - 두 번째 분류기는 업데이트된 가중치를 사용해 훈련 세트에서 훈련하고 다시 예측을 만듬
 - 그 다음에 다시 가중치 업데이트를 하는 식으로 계속됨
 - 이런 연속된 학습 기법은 경사 하강법과 비슷한 면이 있음
@@ -22,7 +22,7 @@
 ### Adaboost 예측기별 가중치 계산 방법
 1. 각 샘플 가중치(W(i))는 1/m으로 초기화
 2. 첫 번째 예측기가 학습되고 가중치가 적용된 에러율 r(1)이 훈련 세트에 대해서 계산됨
-3. j번째 예측기의 가중치가 적용된 에러율은,
+3. j번째 예측기의 샘플 가중치가 적용된 에러율은,
    = 못맞춘 샘플 가중치의 합 / 전체 샘플 가중치의 합
 4. 예측기의 가중치 값은 다음 식으로 계산됨  
    = 학습율 파라미터 * log(1 - r(j) / r(j))  
@@ -51,6 +51,16 @@
 - 트리가 훈련할 때 사용할 훈련 샘플의 비율을 지정할 수 있는 `subsample` 매개변수도 지원함  
   이런 기법을 <b>확률적 그레디언트 부스팅(stochastic gradient boosting)</b>이라고 함
 
+
+## extreme gradient Boosting
+- Gradient Boosting 알고리즘을 분산환경에서도 실행할 수 있도록 구현해놓은 라이브러리
+- 유연성이 좋음. 평가 함수를 포함하여 다양한 커스텀 최적화 옵션을 제공
+- Greedy-algorithm을 사용한 가지치기가 가능. 따라서 과적합이 잘 일어나지 않음
+- 또한 과적합 방지를 위해 규제가 포함되어 있음
+- early stopping을 내부적으로 제공함
+- xgboost는 트리를 만들때 CART(Classification and Regression Trees) 기반 트리를 생성
+- 즉 수식으로는 어떠한 의사결정트리가 주어졌을 때, 해당 트리의 score(information gain)를 계산할 수 있고, 이러한 score 기반으로 나무를 greedy algorithm에 의거하여 가지를 계속 펼쳐나가고(<b>Split Finding</b>), score가 (-)되는 시점에 가치지기를 수행하는 방식
+
 ### XGBoost 일반 파라미터
 - eta : learning Rate, 트리에 가지가 많을 수록 과적합이 일어나기 쉬움. 매 부스팅 step마다  
   weight를 주어 부스팅 과정에서 과적합이 일어나지 않게 함
@@ -66,15 +76,6 @@
 * 파라미터 순위 팁
   * eta -> lambda -> alpha  ....
 
-## extreme gradient Boosting
-- Gradient Boosting 알고리즘을 분산환경에서도 실행할 수 있도록 구현해놓은 라이브러리
-- 유연성이 좋음. 평가 함수를 포함하여 다양한 커스텀 최적화 옵션을 제공
-- Greedy-algorithm을 사용한 가지치기가 가능. 따라서 과적합이 잘 일어나지 않음
-- 또한 과적합 방지를 위해 규제가 포함되어 있음
-- early stopping을 내부적으로 제공함
-- xgboost는 트리를 만들때 CART(Classification and Regression Trees) 기반 트리를 생성
-- 즉 수식으로는 어떠한 의사결정트리가 주어졌을 때, 해당 트리의 score(information gain)를 계산할 수 있고, 이러한 score 기반으로 나무를 greedy algorithm에 의거하여 가지를 계속 펼쳐나가고(<b>Split Finding</b>), score가 (-)되는 시점에 가치지기를 수행하는 방식
--
 
 #### R - XGBTree package 파라미터 종류
 * gamma : 이 값이 커지면 트리 깊이가 줄어들어 보수적인 모델이 됨

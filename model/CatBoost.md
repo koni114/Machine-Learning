@@ -31,7 +31,7 @@
 - <b>즉 catboost에서는 예를 들어 두 번째 depth의 node에서 범주형 변수를 combination 시키고, 3번째 depth에서 해당 combination된 feature를 다시 다른 범주형 변수와 combination 시키는 방식으로 greedy 하게 진행됨</b> 
 - combination은 information gain이 동일한 두 feature를 하나의 feature로 묶어버림
 
-## ordered boosting
+## ordered boosting(ordered TS)
 - 기존의 부스팅 과정과 전체적인 양상은 비슷하되, 조금 다름
 - 기존의 부스팅 모델이 일괄적으로 모든 훈련 데이터를 대상으로 잔차 계산을 했다면, Catboost는 일부만 가지고 잔차계산을 한 뒤, 이걸로 모델을 만들고, 그 뒤의 데이터 잔차는 이 모델로 예측한 값을 사용
 - x1 ~ x10 이라는 데이터 sample이 있을 때, 
