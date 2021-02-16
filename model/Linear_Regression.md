@@ -12,7 +12,19 @@
 - n은 특성의 수
 - x(i)는 i번째 특성값
 - theta(j)는 j번째 모델 파라미터(절편은 theta(0))
-- 선형 회귀 모형을 훈련시키려면 RMSE를 최소화하는 theta를 찾아야 함
+- 이 식은 [식 4-2]처럼 벡터 형태로 더 간단하게 쓸 수 있음
+
+<p align = 'center'><a href="https://www.codecogs.com/eqnedit.php?latex=\hat{y}&space;=&space;h_{\theta}(x)&space;=&space;\theta&space;\cdot&space;x" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{y}&space;=&space;h_{\theta}(x)&space;=&space;\theta&space;\cdot&space;x" title="\hat{y} = h_{\theta}(x) = \theta \cdot x" /></a></p>
+
+- theta는 편향 theta_{0} 과 theta_{1}에서 theta_{n}까지의 특성 가중치를 담은 모델의 파라미터 벡터
+- x는 x_{0}에서 x_{n}까지 담은 샘플의 특성 벡터임. x_{0}는 항상 1
+- theta dot x 는 벡터 theta와 x의 점곱
+- h_(theta)는 모델 파라미터 theta를 사용한 가설 함수 
+- 선형 회귀 모델을 훈련시키려면 RMSE를 최소화하는 theta를 찾아야 함
+- 실제로는 RMSE 보다 평균 제곱 오차(MSE)를 최소화하는 것이 같은 결과 값을 내면서 더 간단함
+- 훈련 세트 X에 대한 선형 회귀 가설 h_{theta}의 MSE는 다음 처럼 계산함
+
+<p align = 'center'><a href="https://www.codecogs.com/eqnedit.php?latex=MSE(X,&space;h_{\theta})&space;=&space;\frac{1}{m}&space;\sum_{i=1}^{m}(\theta^{T}X^{(i)}&space;-&space;y^{(i)})^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?MSE(X,&space;h_{\theta})&space;=&space;\frac{1}{m}&space;\sum_{i=1}^{m}(\theta^{T}X^{(i)}&space;-&space;y^{(i)})^{2}" title="MSE(X, h_{\theta}) = \frac{1}{m} \sum_{i=1}^{m}(\theta^{T}X^{(i)} - y^{(i)})^{2}" /></a></p>
 
 ### 정규방정식(normal equation)
 - 비용 함수 MSE(theta)를 최소화 하는 함수 계수를 찾기 위한 해석적인 방법이 있음
@@ -51,7 +63,7 @@
 이는 "동쪽을 바라봤을 때 발밑에 느껴지는 산의 기울기는 얼마인가?"와 같은 질문 
 - 이러한 같은 질문을 모든 차원에서 행함
 - 다음의 식은 파라미터 theta(j)에 대한 비용 함수의 편도함수임
-<p align = 'center'><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;}{\partial\theta_{j}}&space;MSE(\theta)&space;=&space;\frac{2}{m}&space;\sum_{i&space;=&space;1}^{m}(\theta^{T}x^{i}&space;-&space;y^{i})&space;(x_{j})^{i}" /></p>
+<p align = 'center'><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;}{\partial\theta_{j}}&space;MSE(\theta)&space;=&space;\frac{2}{m}&space;\sum_{i&space;=&space;1}^{m}(\theta^{T}x^{(i)}&space;-&space;y^{(i)})&space;(x_{j})^{(i)}" /></p>
 
 - 위의 식을 이용해 편도 함수를 각각 계산할 수도 있지만, 선형 대수로 한꺼번에도 계산 가능
 - 수식에 theta가 있기 때문에 매 경사 하강법 스텝에서 전체 훈련 세트 X에 대해 계산함
@@ -64,7 +76,7 @@
 - 다음은 경사 하강법의 스텝 식임
 <p align = 'center'><img src="https://latex.codecogs.com/gif.latex?\theta^{next&space;step}&space;=&space;\theta&space;-&space;\eta&space;\bigtriangledown_{\theta}&space;MSE(\theta)" /></p>
 
-- 적절한 반복 휫수를 찾으려면, 반복 횟수를 아주 크게 지정하고 그레디언트 벡터가 아주 작아지면 벡터의 노름이 허용 오차보다 작아지면 알고리즘을 중지시키는 방법이 있음
+- 적절한 반복 휫수를 찾으려면, 반복 횟수를 아주 크게 지정하고 그레디언트 벡터가 아주 작아지면 벡터의 노름이 허용 오차보다 작아지면 경사 하강법이 거의 최솟값에 도달한 것이므로 알고리즘을 중지시키는 방법이 있음
 - 수렴율  
   - 비용함수의 모양에 따라 달라지겠지만 허용 오차 범위 안에서 최적의 솔루션에 도달하기 위해서는 O(1/허용오차)의 반복이 걸릴 수 있음
   - <b>허용 오차를 1/10으로 줄이면 알고리즘의 반복은 10배 늘어남</b>
