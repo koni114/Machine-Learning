@@ -7,7 +7,16 @@
 - 확률적 경사 하강법(Stochastic Gradient Descent, SGD)은 한 번에 하나씩 훈련 샘플을 독립적으로 처리
 - 시계열 데이터를 제외하고는 train/test를 층화 샘플링을 통해서 잘 나눠야 함
 
+## 이진 분류기 훈련
+- `SDGClasifier` 는 무작위로 데이터를 선택하기 때문에 필요하다면 `random_state` 값 지정 필요
+- `model.predict()` 할 때, array 차원을 항상 조심. --> `model.predict([])`
+- 특히 imbalanced한 데이터를 다룰 때 성능 지표로 accuracy는 좋지 않음  
+  f1-score, precision, recall, AUC 등을 이용하자
+- `cross_val_predict` 함수를 이용해서 수행시, cross-validation 시, validation set으로 예측했던 데이터의 예측값을 조합해 최종 pred를 return
+
+
 ## 정밀도(precision)과 재현율(recall)
+- 재현율(recall)은 민감도(sensitivity)나 TPR(True Positive Rate) 진짜양성비율 이라고도 함
 - 정밀도가 재현율 보다 중요한 경우  
   ex) 안전한 동영상을 걸러내는 분류기
 - 재현율이 정밀도보다 중요한 경우  
