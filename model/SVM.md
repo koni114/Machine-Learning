@@ -35,7 +35,7 @@
 - 비선형 데이터셋을 다루는 한 가지 방법은 다항 특성과 같은 특성을 더 추가하는 것
 - 이렇게 하면 선형적으로 구분되는 데이터셋이 만들어질 수 있음
 
-![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_3.png)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_3.JPG)
 
 - 위의 그림에서 왼쪽 그래프는 하나의 특성 x_{1} 만을 가진 간단한 데이터셋을 나타냄
 - 그림에서 볼 수 있듯이 이 데이터셋은 선형적으로 구분이 안됨
@@ -57,7 +57,7 @@ poly_kernel_svm_clf = Pipeline([
 poly_kernel_svm_clf(X, y)
 ~~~
 
-![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_4.png)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_4.JPG)
 
 - 이 코드는 3차 다항식 커널을 사용해 SVM 분류기를 훈련시킴
 - 결과는 위의 그래프의 왼쪽과 같고, 오른쪽 그래프는 10차 다항식 커널을 사용한 또 다른 SVM 분류기 
@@ -108,7 +108,7 @@ rbf_kernel_svm_clf.fit(X, y)
 - 결국 하이퍼파라미터 gamma가 규제의 역할을 함
 - 모델이 과대적합일 경우엔 감소시켜야하고 과소적합일 경우엔 증가시켜야함(hyper-parameter C와 비슷)
  
-![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_5.png)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_5.JPG)
 
 - 다른 커널도 있지만 거의 사용되지 않음. 어떤 커널은 특정 데이터 구조에 특화되어 있음
 - <b>문자열 커널(string kernel)</b>이 가끔 텍스트 문서나 DNA 서열을 분류할 때 사용  
@@ -136,14 +136,14 @@ rbf_kernel_svm_clf.fit(X, y)
 - 아래 그래프는 무작위로 생성한 선형 데이터셋에 훈련시킨 두 개의 선형 SVM 회귀 모델을 보여줌
 - 하나는 마진을 크게 하고(입실론 = 1.5) 다른 하나는 마진을 작게(입실론 = 0.5)하여 만듬
 
-![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_6.png)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_6.JPG)
 
 - 마진 안에서는 훈련 샘플이 추가되어도 모델 예측에는 큰 영향이 없음. 그래서 이 모델을 <b>입실론에 민감하지 않다(epsilon-insentive)</b>고 말함
 - 사이킷런의 `LinearSVR`을 사용해 선형 SVM 적용 가능
 - 비선형 회귀 작업을 처리하려면 커널 SVM 모델을 사용하는데, 아래 그래프는 임의의 2차방정식 형태의 훈련 세트에 2차 다항 커널을 사용한 SVM 회귀를 보여줌
 - 왼쪽 그래프는 규제가 거의 없고, 오른쪽 그래프는 규제가 훨씬 많음
 
-![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_7.png)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_7.JPG)
 
 - 사이킷런에서 SVR은 SVC의 회귀 버전임, LinearSVR은 필요한 시간이 훈련 세트의 크기에 비례해서 선형적으로 늘어남
 - 하지만 SVR은 훈련 세트가 커지면 훨씬 느려짐 
