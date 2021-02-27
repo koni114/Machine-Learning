@@ -22,7 +22,7 @@
   예를 들어 이상치 하나가 다른 label 집단에 들어가 있으면 하드 마진을 찾을 수 없음
 - 이러한 문제를 피하려면 좀 더 유연한 모델이 필요한데, 도로의 폭을 가능한 한 넓게 유지하는 것과 <b>마진 오류(margin violation)</b>  사이에 적절한 균형을 잡아야 함. 이를 <b>소프트 마진 분류(soft margin classification)</b>이라고 함
 
-![img](C:\Machine_Learning\img\SVM_2.png)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_2.JPG)
 
 - 여러 하이퍼파라미터를 지정할 수 있는데, C(cost)는 이런 하이퍼파라미터 중에 하나임
 - C를 <b>감소</b>시켜 모델을 규제 할 수 있음, 즉, C는 마진 오류 비용이라고 생각하면 됨  
@@ -34,8 +34,8 @@
 - 선형 SVM 분류기가 효율적이고, 많은 경우에 아주 잘 작동하지만, 선형적으로는 분류할 수 없는 데이터셋이 많음
 - 비선형 데이터셋을 다루는 한 가지 방법은 다항 특성과 같은 특성을 더 추가하는 것
 - 이렇게 하면 선형적으로 구분되는 데이터셋이 만들어질 수 있음
- 
-![img](C:\Machine_Learning\img\SVM_3.png)
+
+![img]( https://github.com/koni114/Machine-Learning/blob/master/img/SVM_3.png)
 
 - 위의 그림에서 왼쪽 그래프는 하나의 특성 x_{1} 만을 가진 간단한 데이터셋을 나타냄
 - 그림에서 볼 수 있듯이 이 데이터셋은 선형적으로 구분이 안됨
@@ -57,7 +57,7 @@ poly_kernel_svm_clf = Pipeline([
 poly_kernel_svm_clf(X, y)
 ~~~
 
-![img](C:\Machine_Learning\img\SVM_4.png)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_4.png)
 
 - 이 코드는 3차 다항식 커널을 사용해 SVM 분류기를 훈련시킴
 - 결과는 위의 그래프의 왼쪽과 같고, 오른쪽 그래프는 10차 다항식 커널을 사용한 또 다른 SVM 분류기 
@@ -81,7 +81,7 @@ poly_kernel_svm_clf(X, y)
 - 이렇게 하면 차원이 매우 커지고 따라서 변환된 훈련 세트가 선형적으로 구분될 가능성이 높음
 - 단점은 훈련 세트에 있는 n개의 특성을 가진 m개의 샘플이, m개의 특성을 가진 m개의 샘플로 변환된다는 것. 훈련 세트가 매우 클 경우 동일한 크기의 아주 많은 특성들이 만들어짐
 
-![img](C:/Machine_Learning/img/SVM_10.JPG)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_10.JPG)
 
 ### gamma, C(오류 비용) 간단 정리
 - gamma, C(cost)는 커질수록 모델의 불규칙적이며, 과대적합될 우려가 있음
@@ -108,7 +108,7 @@ rbf_kernel_svm_clf.fit(X, y)
 - 결국 하이퍼파라미터 gamma가 규제의 역할을 함
 - 모델이 과대적합일 경우엔 감소시켜야하고 과소적합일 경우엔 증가시켜야함(hyper-parameter C와 비슷)
  
-![img](C:\Machine_Learning\img\SVM_5.png)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_5.png)
 
 - 다른 커널도 있지만 거의 사용되지 않음. 어떤 커널은 특정 데이터 구조에 특화되어 있음
 - <b>문자열 커널(string kernel)</b>이 가끔 텍스트 문서나 DNA 서열을 분류할 때 사용  
@@ -136,14 +136,14 @@ rbf_kernel_svm_clf.fit(X, y)
 - 아래 그래프는 무작위로 생성한 선형 데이터셋에 훈련시킨 두 개의 선형 SVM 회귀 모델을 보여줌
 - 하나는 마진을 크게 하고(입실론 = 1.5) 다른 하나는 마진을 작게(입실론 = 0.5)하여 만듬
 
-![img](C:\Machine_Learning\img\SVM_6.png)
+![img]( https://github.com/koni114/Machine-Learning/blob/master/img/SVM_6.png)
 
 - 마진 안에서는 훈련 샘플이 추가되어도 모델 예측에는 큰 영향이 없음. 그래서 이 모델을 <b>입실론에 민감하지 않다(epsilon-insentive)</b>고 말함
 - 사이킷런의 `LinearSVR`을 사용해 선형 SVM 적용 가능
 - 비선형 회귀 작업을 처리하려면 커널 SVM 모델을 사용하는데, 아래 그래프는 임의의 2차방정식 형태의 훈련 세트에 2차 다항 커널을 사용한 SVM 회귀를 보여줌
 - 왼쪽 그래프는 규제가 거의 없고, 오른쪽 그래프는 규제가 훨씬 많음
 
-![img](C:\Machine_Learning\img\SVM_7.png)
+![img]( https://github.com/koni114/Machine-Learning/blob/master/img/SVM_7.png)
 
 - 사이킷런에서 SVR은 SVC의 회귀 버전임, LinearSVR은 필요한 시간이 훈련 세트의 크기에 비례해서 선형적으로 늘어남
 - 하지만 SVR은 훈련 세트가 커지면 훨씬 느려짐 
@@ -161,9 +161,9 @@ rbf_kernel_svm_clf.fit(X, y)
 - 다음의 식을 가볍게 참조하자
 <p align = 'center'><img src = "https://latex.codecogs.com/gif.latex?\hat{y}&space;=&space;\begin{Bmatrix}&space;0&space;&&space;w^{T}x&space;&plus;&space;b&space;<&space;0\\&space;1&space;&&space;w^{T}x&space;&plus;&space;b&space;\geq&space;0&space;\end{Bmatrix}"/></p>
 
-![img](C:/Machine_Learning/img/SVM_2.JPG)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_2.JPG)
 
-![img](C:/Machine_Learning/img/SVM_8.JPG)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_8.JPG)
   
 - 위의 두 개의 이미지 중 첫번째 이미지의 오른쪽 그래프의 결정함수가 두 번째 이미지에 나타나 있음
 - 특성이 2개인 데이터셋이기 때문에 2차원 평면임
@@ -182,7 +182,7 @@ rbf_kernel_svm_clf.fit(X, y)
 - <b>즉 기울기를 2로 나누는 것은 마진에 2를 곱하는 것과 같음</b>
 - 다음의 2차원 그래프를 보면 이해하기 쉬움. <b>가중치 벡터가 작을수록 경계는 커짐!</b>
 
-![img](C:/Machine_Learning/img/SVM_9.JPG)
+![img](https://github.com/koni114/Machine-Learning/blob/master/img/SVM_9.JPG)
 
 - 마진을 크게 하기 위해 ||W||를 최소화하려고 함
 - 마진 오류를 하나도 만들지 않으려면, 결정 함수가 모든 양성 훈련 샘플에서는 1보다 커야 하고 음성 훈련 샘플에서는 -1보다 작아야 함
