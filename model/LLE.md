@@ -17,7 +17,8 @@
 1. 먼저 알고리즘이 각 훈련 샘플 x^(i)에 대해 가장 가까운 k개의 샘플을 찾음  
    여기서의 k는 하이퍼파라미터 
 2. 이 이웃에 대한 선형함수로 x^(i)를 재구성함  
-   다시 말하면 x^(i)와 sum{j=1, m} w_{i,j} x^(j) 사이의 거리가 최소가 되는 w(ij)를 찾는 것
+   다시 말하면 x^(i)와 sum{j=1, m} w_{i,j} x^(j) 사이의 거리가 최소가 되는 w(ij)를 찾는 것  
+   여기서 x^{(j)}는 이웃 k개의 샘플을 말함
 3. 결과적으로 아래 식의 최적화 문제를 푸는 것. W는 w(ij)를 모두 담은 가중치 행렬  
    두 번째 제약은 각 훈련 샘플 x^(i)에 대한 가중치를 단순히 정규화하는 것
 
@@ -30,3 +31,5 @@
 - 첫 번째 단계와 비슷해 보이지만, 샘플을 고정하고 최적의 가중치를 찾는 첫 번째 단계와는 다르게  
   가중치를 고정하고 저차원의 공간에서 샘플 이미지의 최적 위치를 찾음
 - Z는 모든 z^(i)를 포함하는 행렬임
+
+<p align = 'center'><a href="https://www.codecogs.com/eqnedit.php?latex=Z&space;=&space;argmin(z^{(i)}&space;-&space;\sum_{j=1}^{m}W_{i,j}z^{(j)})^{2}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Z&space;=&space;argmin(z^{(i)}&space;-&space;\sum_{j=1}^{m}W_{i,j}z^{(j)})^{2}" title="Z = argmin(z^{(i)} - \sum_{j=1}^{m}W_{i,j}z^{(j)})^{2}" /></a></p>
