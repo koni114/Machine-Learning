@@ -17,7 +17,7 @@
 - <b>SVM은 특성 경계에 민감한데, </b> scale이 너무 좁게 되면 Support vector의 거리가 좁아질 수 있기 때문
 
 ### 선형 소프트 마진 분류
-- 모든 샘플이 도로 바깥족에 올바르게 분류되어 있다면 이를 <b>hard margin classification</b>이라고 함
+- 모든 샘플이 도로 바깥쪽에 올바르게 분류되어 있다면 이를 <b>hard margin classification</b>이라고 함
 - 두가지 문제점이 있는데, 데이터가 선형으로 잘 구분되어 있어야하고, 이상치에 민감함  
   예를 들어 이상치 하나가 다른 label 집단에 들어가 있으면 하드 마진을 찾을 수 없음
 - 이러한 문제를 피하려면 좀 더 유연한 모델이 필요한데, 도로의 폭을 가능한 한 넓게 유지하는 것과 <b>마진 오류(margin violation)</b>  사이에 적절한 균형을 잡아야 함. 이를 <b>소프트 마진 분류(soft margin classification)</b>이라고 함
@@ -79,7 +79,7 @@ poly_kernel_svm_clf(X, y)
 - 예를 들어 앞에서 본 1차원 데이터셋에 두 개의 랜드마크 x1 = -2와 x1 = 1을 추가하자(위의 왼쪽 그래프)
 - 그리고 gamma = 0.3인 가우시안 방사 기저 함수(radial basis function, RBF)를 유사도 함수로 정의하자
 - 가우시안 RBF 식은 다음과 같음
-<p align = 'center'><img src = "https://latex.codecogs.com/gif.latex?\phi_{\gamma&space;}(x,&space;k)&space;=&space;exp(-\gamma\left&space;\|&space;x&space;-&space;k&space;\right&space;\|^{2})"/></p>
+<p align = 'center'><img src = "https://latex.codecogs.com/gif.latex?\phi_{\gamma&space;}(x,&space;l)&space;=&space;exp(-\gamma\left&space;\|&space;x&space;-&space;l&space;\right&space;\|^{2})"/></p>
 
 - 'l'은 랜드마크 지점이며, r은 0보다 커야하며, 값이 작을수록 넓은 종모양이 됨 
 - 이 함수의 값은 0부터 1까지 변화하며 종 모양으로 나타남 
